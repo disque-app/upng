@@ -64,11 +64,12 @@ var pngImage = window.UPNG.decode(/* ... */)
 
 UPNG.js supports APNG and the interface expects "frames". Regular PNG is just a single-frame animation (single-item array).
 
-#### `UPNG.encode(imgs, w, h, cnum, [dels])`
+#### `UPNG.encode(imgs, w, h, cnum, [dels], [tabs])`
 * `imgs`: array of frames. A frame is an ArrayBuffer containing the pixel data (RGBA, 8 bits per channel)
 * `w`, `h` : width and height of the image
 * `cnum`: number of colors in the result;  0: all colors (lossless PNG)
 * `dels`: array of millisecond delays for each frame (only when 2 or more frames)
+* `tabs`: object of options. `{ loop: 1 }` will play the animation only once (default is `0`, will play indefinitely).
 * returns an ArrayBuffer with binary data of a PNG file
 
 UPNG.js can do a lossy minification of PNG files, similar to [TinyPNG](https://tinypng.com/) and other tools. It performed quantization with [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering) in the past, but now we use [K-d trees](https://en.wikipedia.org/wiki/K-d_tree).
